@@ -18,7 +18,7 @@ def regGracenote():
         url = 'https://c2091926011.web.cddbp.net/webapi/xml/1.0/',
         data = payload,
         headers = {"Content-Type":"application/xml", "Content-Length":str(len(payload))})
-    if res != 200:
+    if res.status_code != 200:
         print('genarate user ID error:',res.status_code)
         exit()
     for r in ET.fromstring(res.content).iter('USER'):
@@ -83,7 +83,7 @@ def GetFromGracenote(payload):
         url = 'https://c2091926011.web.cddbp.net/webapi/xml/1.0/',
         data = payload,
         headers = {"Content-Type":"application/xml", "Content-Length":str(len(payload))})
-    if res != 200:
+    if res.status_code != 200:
         print('get data from gracentoe error:',res.status_code)
         exit()
     return res.text
